@@ -1,0 +1,18 @@
+<lifecycleMappingMetadata>
+  <pluginExecutions>
+    <pluginExecution>
+      <pluginExecutionFilter>
+        <goals>
+        	<goal>check-manifest</goal>
+          <goal>combine-sdu</goal>
+          <goal>configure</goal>
+          <goal>create-sdu</goal>
+          <goal>package</goal>
+        </goals>
+      </pluginExecutionFilter>
+      <action>
+        <ignore />
+      </action>
+    </pluginExecution>
+  </pluginExecutions>
+</lifecycleMappingMetadata>

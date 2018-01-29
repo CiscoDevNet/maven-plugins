@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: device-package-plugin-its
+Name: com.cisco.maven.plugins.test:simple-network-feature-it
+Created-By: DNA SDK 1.2.6.201801120709
+Build-Jdk: 1.8.0_151

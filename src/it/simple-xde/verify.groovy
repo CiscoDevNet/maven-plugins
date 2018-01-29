@@ -1,0 +1,1 @@
+assert new File( basedir, "target/simple-xde-it-1.0-SNAPSHOT.xar" ).isFile()

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>Device Package Plugin Changes</title>
+	</properties>
+	<body>
+		<release version="1.0.0" date="24-Jan-2018" description="First official release">
+			<action dev="danijoh2" type="add" date="26-Jan-2018">
+				Added basic integration testing.
+			</action>
+			<action dev="danijoh2" type="fix" date="24-Jan-2018">
+				Fixed any potential resource leaks.
+			</action>
+			<action dev="danijoh2" type="add" date="24-Jan-2018">
+				Added 'configure' goal to aid in migrating projects using older plugins to this new plugin.
+			</action>
+			<action dev="danijoh2" type="add" date="22-Jan-2018">
+				Pull together all device package related plugins into a single centralized plugin.
+			</action>
+		</release>
+	</body>
+</document>

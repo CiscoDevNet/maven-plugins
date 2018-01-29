@@ -1,0 +1,1 @@
+assert new File( basedir, "target/simple-device-profile-it-1.0-SNAPSHOT.dar" ).isFile()

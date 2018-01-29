@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--************************************************** -->
+<!-- Copyright (c) 2009-2018 Cisco Systems, Inc. -->
+<!-- All rights reserved. -->
+<!--************************************************** -->
+
+<component-set>
+	<components>
+		<!-- Provides support for Device Profile Projects -->
+		<component>
+			<role>org.apache.maven.artifact.handler.ArtifactHandler</role>
+			<role-hint>dar</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<!--the extension used by Maven in the repository -->
+				<extension>dar</extension>
+				<!--the type used when specifying dependencies etc. -->
+				<type>dar</type>
+				<!--the packaging used when declaring an implementation of the packaging -->
+				<packaging>dar</packaging>
+			</configuration>
+		</component>
+		<component>
+			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+			<role-hint>dar</role-hint>
+			<implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
+			</implementation>
+			<configuration>
+				<phases>
+					<validate>
+						com.cisco.maven.plugins:device-package-plugin:validate
+					</validate>
+					<process-resources>
+						com.cisco.maven.plugins:device-package-plugin:check-manifest,
+						org.apache.maven.plugins:maven-resources-plugin:resources
+					</process-resources>
+					<package>
+						com.cisco.maven.plugins:device-package-plugin:package,
+						com.cisco.maven.plugins:device-package-plugin:create-sdu
+					</package>
+					<install>
+						org.apache.maven.plugins:maven-install-plugin:install
+					</install>
+					<deploy>
+						org.apache.maven.plugins:maven-deploy-plugin:deploy
+					</deploy>
+				</phases>
+			</configuration>
+		</component>
+
+		<!-- Provides support for Network Feature Projects -->
+		<component>
+			<role>org.apache.maven.artifact.handler.ArtifactHandler</role>
+			<role-hint>feature</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<extension>feature</extension>
+				<type>feature</type>
+				<packaging>feature</packaging>
+			</configuration>
+		</component>
+		<component>
+			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+			<role-hint>feature</role-hint>
+			<implementation>
+				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
+			</implementation>
+			<configuration>
+				<phases>
+					<validate>
+						com.cisco.maven.plugins:device-package-plugin:validate
+					</validate>
+					<process-resources>
+						com.cisco.maven.plugins:device-package-plugin:check-manifest,
+						org.apache.maven.plugins:maven-resources-plugin:resources
+					</process-resources>
+					<package>
+						com.cisco.maven.plugins:device-package-plugin:package,
+						com.cisco.maven.plugins:device-package-plugin:create-sdu
+					</package>
+					<install>
+						org.apache.maven.plugins:maven-install-plugin:install
+					</install>
+					<deploy>
+						org.apache.maven.plugins:maven-deploy-plugin:deploy
+					</deploy>
+				</phases>
+			</configuration>
+		</component>
+
+		<!-- Provides support for XDE Projects -->
+		<component>
+			<role>org.apache.maven.artifact.handler.ArtifactHandler</role>
+			<role-hint>xar</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<extension>xar</extension>
+				<type>xar</type>
+				<packaging>xar</packaging>
+			</configuration>
+		</component>
+		<component>
+			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+			<role-hint>xar</role-hint>
+			<implementation>
+				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
+			</implementation>
+			<configuration>
+				<phases>
+					<validate>
+						com.cisco.maven.plugins:device-package-plugin:validate
+					</validate>
+					<process-resources>
+						org.apache.maven.plugins:maven-resources-plugin:resources
+					</process-resources>
+					<package>
+						com.cisco.maven.plugins:device-package-plugin:package,
+						com.cisco.maven.plugins:device-package-plugin:create-sdu
+					</package>
+					<install>
+						org.apache.maven.plugins:maven-install-plugin:install
+					</install>
+					<deploy>
+						org.apache.maven.plugins:maven-deploy-plugin:deploy
+					</deploy>
+				</phases>
+			</configuration>
+		</component>
+
+		<!-- Provides support for projects that declare a dependency on a Tigerstripe Model Project -->
+		<component>
+			<role>org.apache.maven.artifact.handler.ArtifactHandler</role>
+			<role-hint>tigerstripe-module</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<extension>jar</extension>
+				<type>tigerstripe-module</type>
+				<packaging>tigerstripe-module</packaging>
+				<includesDependencies>true</includesDependencies>
+			</configuration>
+		</component>
+	</components>
+</component-set>

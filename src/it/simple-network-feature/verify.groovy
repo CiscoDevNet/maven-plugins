@@ -1,0 +1,1 @@
+assert new File( basedir, "target/simple-network-feature-it-1.0-SNAPSHOT.feature" ).isFile()
