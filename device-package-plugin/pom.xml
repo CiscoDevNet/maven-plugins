@@ -267,8 +267,8 @@
 					<configuration>
 						<server>github</server>
 						<message>Site documentation for ${project.artifactId} v${project.version}</message>
-						<path>${site.path}</path>
-						<merge>override</merge>
+						<path>device-package-plugin</path>
+						<merge>true</merge>
 					</configuration>
 				</plugin>
 				<plugin>
