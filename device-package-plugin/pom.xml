@@ -40,9 +40,9 @@
 	</developers>
 	
 	<scm>
-		<connection>scm:git:ssh://git@github.com:hankolerd/device-package-plugin.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:hankolerd/device-package-plugin.git</developerConnection>
-		<url>https://github.com/hankolerd/device-package-plugin</url>
+		<connection>scm:git:ssh://git@github.com:hankolerd/maven-plugins.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:hankolerd/maven-plugins.git</developerConnection>
+		<url>https://github.com/hankolerd/maven-plugins</url>
 		<tag>HEAD</tag>
 	</scm>
 	
