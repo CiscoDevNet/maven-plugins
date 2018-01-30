@@ -244,6 +244,7 @@
 					<version>${maven-release-plugin.version}</version>
 					<configuration>
 						<preparationGoals>clean verify -Prun-its</preparationGoals>
+						<releaseProfiles>release</releaseProfiles>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -337,7 +338,7 @@
 		<profile>
 			<!-- If testing on Mac CLI, run 'export GPG_TTY=$(tty)' before build, or you may see:
 			gpg: signing failed: Inappropriate ioctl for device -->
-			<id>release-profile</id>
+			<id>release</id>
 			<build>
 				<plugins>
 					<plugin>
