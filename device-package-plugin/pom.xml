@@ -1,22 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cisco.maven.plugins</groupId>
 	<artifactId>device-package-plugin</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
-
+	
 	<name>Device Package Plugin</name>
 	<description>Provides support for building Device Package related projects for various Cisco Network Management Products.</description>
-	<!-- TODO: Need to find a place to host the project's generated site, and then link it here. -->
-	<url>https://developer.cisco.com</url>
-
+	<url>https://hankolerd.github.io/device-package-plugin</url>
+	
 	<organization>
 		<name>Cisco Systems, Inc.</name>
 		<url>https://www.cisco.com</url>
 	</organization>
-
+	
 	<licenses>
 		<license>
 			<name>Cisco Sample Code License v1.1</name>
@@ -40,7 +38,7 @@
 			</roles>
 		</developer>
 	</developers>
-
+	
 	<scm>
 		<connection>scm:git:ssh://git@github.com:hankolerd/device-package-plugin.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:hankolerd/device-package-plugin.git</developerConnection>
@@ -48,14 +46,6 @@
 		<tag>HEAD</tag>
 	</scm>
 	
-	<!-- TODO: Find a public place to automate builds. -->
-	<!--
-	<ciManagement>
-		<system></system>
-		<url></url>
-	</ciManagement>
-	-->
-
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -65,14 +55,17 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
+		<site>
+			<id>website</id>
+			<url>https://hankolerd.github.com/${project.artifactId}</url>
+		</site>
 	</distributionManagement>
 	
 	<prerequisites>
 		<maven>3.2</maven>
 	</prerequisites>
-
+	
 	<properties>
-
 		<!-- Dependency Versions -->
 		<apache-collections.version>4.1</apache-collections.version>
 		<apache-commons-io.version>2.6</apache-commons-io.version>
@@ -85,7 +78,7 @@
 		<maven-resolver.version>1.1.0</maven-resolver.version>
 		<mojo-executor.version>2.3.0</mojo-executor.version>
 		<plexus-build-api.version>0.0.7</plexus-build-api.version>
-
+		
 		<!-- Build Plugin Versions -->
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -94,14 +87,14 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-site-plugin.version>3.7</maven-site-plugin.version>
-
+		
 		<!-- Site Dependency Versions -->
 		<maven-fluido-skin.version>1.7</maven-fluido-skin.version>
 
 		<!-- Project Settings -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -129,7 +122,6 @@
 			<artifactId>maven-resolver-util</artifactId>
 			<version>${maven-resolver.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
@@ -145,7 +137,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache-commons-lang3.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
@@ -156,7 +147,6 @@
 			<artifactId>plexus-build-api</artifactId>
 			<version>${plexus-build-api.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.twdata.maven</groupId>
 			<artifactId>mojo-executor</artifactId>
@@ -184,7 +174,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -192,7 +181,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -253,6 +242,10 @@
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${maven-release-plugin.version}</version>
+					<configuration>
+						<useReleaseProfile>true</useReleaseProfile>
+						<goals>deploy site site-deploy</goals>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
@@ -262,8 +255,20 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven-site-plugin.version}</version>
 					<configuration>
+						<skipDeploy>true</skipDeploy>
 						<inputEncoding>UTF-8</inputEncoding>
 						<outputEncoding>UTF-8</outputEncoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>site-maven-plugin</artifactId>
+					<version>0.9</version>
+					<configuration>
+						<server>github</server>
+						<message>Site documentation for ${project.artifactId} v${project.version}</message>
+						<path>${site.path}</path>
+						<merge>override</merge>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -271,10 +276,21 @@
 					<artifactId>doxia-site-renderer</artifactId>
 					<version>1.8</version>
 				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.8</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>ossrh</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	
 	<reporting>
 		<excludeDefaults>true</excludeDefaults>
 		<outputDirectory>${project.build.directory}/site</outputDirectory>
@@ -317,36 +333,14 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
+	
 	<profiles>
 		<profile>
 			<!-- If testing on Mac CLI, run 'export GPG_TTY=$(tty)' before build, or you may see:
 			gpg: signing failed: Inappropriate ioctl for device -->
-			<id>release</id>
+			<id>release-profile</id>
 			<build>
 				<plugins>
-					<plugin>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>generate-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>generate-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<executions>
@@ -362,13 +356,19 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.8</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>false</autoReleaseAfterClose>
-						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>com.github.github</groupId>
+						<artifactId>site-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>publish-release-docs</id>
+								<phase>site-deploy</phase>
+								<goals>
+									<goal>site</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
