@@ -92,6 +92,7 @@
 		<maven-fluido-skin.version>1.7</maven-fluido-skin.version>
 
 		<!-- Project Settings -->
+		<github.global.server>github</github.global.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
@@ -271,10 +272,8 @@
 					<artifactId>site-maven-plugin</artifactId>
 					<version>0.9</version>
 					<configuration>
-						<server>github</server>
 						<message>Site documentation for ${project.artifactId} v${project.version}</message>
 						<path>device-package-plugin</path>
-						<merge>true</merge>
 					</configuration>
 				</plugin>
 				<plugin>
