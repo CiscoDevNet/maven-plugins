@@ -8,7 +8,7 @@
 	
 	<name>Device Package Plugin</name>
 	<description>Provides support for building Device Package related projects for various Cisco Network Management Products.</description>
-	<url>https://hankolerd.github.io/device-package-plugin</url>
+	<url>https://hankolerd.github.io/maven-plugins/device-package-plugin</url>
 	
 	<organization>
 		<name>Cisco Systems, Inc.</name>
@@ -57,7 +57,7 @@
 		</repository>
 		<site>
 			<id>website</id>
-			<url>https://hankolerd.github.com/${project.artifactId}</url>
+			<url>https://hankolerd.github.io/maven-plugins/device-package-plugin</url>
 		</site>
 	</distributionManagement>
 	
