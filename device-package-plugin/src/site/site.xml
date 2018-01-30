@@ -12,9 +12,15 @@
     	<href>https://www.cisco.com/</href>
 	</bannerLeft>
 
-	<poweredBy>
-    	<logo name="Cisco" href="https://www.cisco.com" img="images/cisco-small.png"/>
-  	</poweredBy>
+    <custom>
+        <fluidoSkin>
+            <gitHub>
+                <projectId>hankolerd/maven-plugins</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>gray</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
 
 	<version position="right"/>
 	<publishDate position="right"/>
@@ -41,5 +47,10 @@
         	<item name="Cisco DevNet" href="https://developer.cisco.com"/>
         	<item name="Cisco GitHub" href="https://cisco.github.io"/>
         </menu>
-    </body>
+    </body>	
+
+    <poweredBy>
+    	<logo name="Cisco" href="https://www.cisco.com" img="images/cisco-small.png"/>
+  	</poweredBy>
+
 </project>
