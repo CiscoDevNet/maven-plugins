@@ -57,7 +57,7 @@
 		</repository>
 		<site>
 			<id>website</id>
-			<url>https://hankolerd.github.io/maven-plugins/device-package-plugin</url>
+			<url>https://hankolerd.github.io/maven-plugins</url>
 		</site>
 	</distributionManagement>
 	
