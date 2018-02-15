@@ -110,7 +110,7 @@ public class ProjectPackagingMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
 
         if (project.getArtifact() != null && project.getArtifact().getFile() != null
-                && project.getArtifact().getFile().exists()) {
+                && project.getArtifact().getFile().exists() && !project.getArtifact().getFile().isDirectory()) {
             getLog().info("The project artifact already exists: " + project.getArtifact().getFile().getAbsolutePath()
                     + ", skipping packaging.");
         } else {
