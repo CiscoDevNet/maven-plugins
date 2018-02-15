@@ -171,8 +171,6 @@
 					<configuration>
 						<serverId>ossrh</serverId>
 						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						<!-- TODO: Need to thoroughly test this plugin and downstream projects
-							before allowing auto-release -->
 						<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					</configuration>
 				</plugin>

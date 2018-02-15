@@ -4,8 +4,7 @@
 	<parent>
 		<groupId>com.cisco.maven.plugins</groupId>
 		<artifactId>cisco-maven-plugins-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../cisco-maven-plugins-parent/pom.xml</relativePath>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>device-package-maven-plugin</artifactId>
