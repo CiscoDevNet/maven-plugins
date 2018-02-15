@@ -3,7 +3,7 @@
 
 	<groupId>com.cisco.maven.plugins</groupId>
 	<artifactId>cisco-maven-plugins-parent</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<name>Cisco Maven Plugins Parent POM</name>
@@ -19,7 +19,7 @@
 		<connection>scm:git:https://github.com/CiscoDevNet/maven-plugins.git</connection>
 		<developerConnection>scm:git:git@github.com:CiscoDevNet/maven-plugins.git</developerConnection>
 		<url>https://github.com/CiscoDevNet/maven-plugins</url>
-		<tag>cisco-maven-plugins-parent-1.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
