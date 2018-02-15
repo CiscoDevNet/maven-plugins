@@ -8,6 +8,7 @@
 	
 	<name>Cisco Maven Plugins Parent POM</name>
 	<description>Provides common property and build management of various Cisco Maven Plugins.</description>
+	<url>https://ciscodevnet.github.io</url>
 	
 	<organization>
 		<name>Cisco Systems, Inc.</name>
@@ -37,6 +38,29 @@
 		</repository>
 	</distributionManagement>
 	
+	<licenses>
+		<license>
+			<name>Cisco Sample Code License v1.1</name>
+			<url>./LICENSE.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<developers>
+		<developer>
+			<id>danijoh2</id>
+			<name>Daniel Johnson</name>
+			<email>danijoh2@cisco.com</email>
+			<organization>Cisco Systems, Inc.</organization>
+			<organizationUrl>https://www.cisco.com</organizationUrl>
+			<timezone>America/Los_Angeles</timezone>
+			<roles>
+				<role>developer</role>
+				<role>lead</role>
+			</roles>
+		</developer>
+	</developers>
+	
 	<properties>
 		<!-- Build Plugin Versions -->
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
@@ -51,7 +75,6 @@
 		<maven-fluido-skin.version>1.7</maven-fluido-skin.version>
 
 		<!-- Project Settings -->
-		<github.global.server>github</github.global.server>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -66,23 +89,6 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<artifactId>maven-plugin-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>mojo-descriptor</id>
-							<goals>
-								<goal>descriptor</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>help-goal</id>
-							<goals>
-								<goal>helpmojo</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
@@ -119,7 +125,6 @@
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${maven-release-plugin.version}</version>
 					<configuration>
-						<preparationGoals>clean verify -Prun-its</preparationGoals>
 						<useReleaseProfile>false</useReleaseProfile>
 						<releaseProfiles>release</releaseProfiles>
 					</configuration>
@@ -132,6 +137,7 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven-site-plugin.version}</version>
 					<configuration>
+						<!-- Using github:site-maven-plugin for deployment -->
 						<skipDeploy>true</skipDeploy>
 						<inputEncoding>UTF-8</inputEncoding>
 						<outputEncoding>UTF-8</outputEncoding>
@@ -142,8 +148,14 @@
 					<artifactId>site-maven-plugin</artifactId>
 					<version>0.9</version>
 					<configuration>
+						<server>github</server>
+						<repositoryOwner>ciscodevnet</repositoryOwner>
+						<repositoryName>ciscodevnet.github.io</repositoryName>
 						<message>Site documentation for ${project.artifactId} v${project.version}</message>
-						<path>${project.artifactId}</path>
+						<path>maven-plugins/${project.artifactId}</path>
+						<!-- TODO: Need to thoroughly test this plugin and downstream projects
+							before allowing them to commit direct to master -->
+						<branch>development</branch>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -159,6 +171,8 @@
 					<configuration>
 						<serverId>ossrh</serverId>
 						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<!-- TODO: Need to thoroughly test this plugin and downstream projects
+							before allowing auto-release -->
 						<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
@@ -265,42 +279,6 @@
 								<phase>site-deploy</phase>
 								<goals>
 									<goal>site</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>run-its</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-invoker-plugin</artifactId>
-						<version>1.7</version>
-						<configuration>
-							<debug>true</debug>
-							<cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-							<pomIncludes>
-								<pomInclude>*/pom.xml</pomInclude>
-							</pomIncludes>
-							<postBuildHookScript>verify</postBuildHookScript>
-							<localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
-							<settingsFile>src/it/settings.xml</settingsFile>
-							<goals>
-								<goal>clean</goal>
-								<goal>verify</goal>
-							</goals>
-						</configuration>
-						<executions>
-							<execution>
-								<id>integration-test</id>
-								<goals>
-									<goal>install</goal>
-									<goal>integration-test</goal>
-									<goal>verify</goal>
 								</goals>
 							</execution>
 						</executions>
