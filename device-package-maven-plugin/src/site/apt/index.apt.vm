@@ -1,0 +1,28 @@
+	------
+	Overview
+	------
+	------
+	2018-1-19
+	------
+
+Overview
+
+  The Device Package Maven Plugin provides support for validating and packaging all Device Package project types.
+
+    * Device Profile projects
+
+    * Network Feature projects
+
+    * XDE projects
+
+
+  It also supports creating a Single Deployable Unit (SDU), to bundle all downstream dependencies
+  of each project type into a single archive for deployment to supported platforms.
+    
+* Pre-Requisites
+ 
+  Maven 3.2 or later and Java 8 or later is required to use this plugin.
+  
+* Usage
+
+  General instructions on how to use this plugin can be found on the {{{./usage.html}usage page}}.
