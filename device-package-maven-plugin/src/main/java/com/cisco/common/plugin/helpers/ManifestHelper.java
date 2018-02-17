@@ -1,11 +1,8 @@
-/********************************************************************************
- * Copyright (c) 2018 by Cisco Systems, Inc. and/or its affiliates.
- * All rights reserved.
+/******************************************************************************
+ * Copyright (C) 2018 Cisco and/or its affiliates. All rights reserved.
  *
- * This software is made available under the CISCO SAMPLE CODE LICENSE
- * Version 1.1. See LICENSE.TXT at the root of this project for more information.
- *
- ********************************************************************************/
+ * This source code is distributed under the terms of the MIT license.
+ *****************************************************************************/
 package com.cisco.common.plugin.helpers;
 
 import java.io.BufferedReader;

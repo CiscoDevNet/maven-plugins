@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.cisco.maven.plugins</groupId>
 		<artifactId>cisco-maven-plugins-parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<artifactId>device-package-maven-plugin</artifactId>

@@ -4,6 +4,11 @@
 		<title>Device Package Maven Plugin Changes</title>
 	</properties>
 	<body>
+		<release version="1.0.1" date="" description="Change to MIT License">
+			<action dev="danijoh2" type="add" date="16-Feb-2018">
+				Changed to MIT License.
+			</action>
+		</release>
 		<release version="1.0.0" date="15-Feb-2018" description="First release">
 			<action dev="danijoh2" type="add" date="26-Jan-2018">
 				Added basic integration testing.
