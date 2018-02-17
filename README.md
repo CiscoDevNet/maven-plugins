@@ -4,7 +4,7 @@ This repository is intended to house public Maven Plugins provided by Cisco.
 
 ## License
 
-The code and plugins are made available under the [Cisco Sample Source Code v1.1 license](LICENSE), unless otherwise stated.
+The code and plugins are made available under the [MIT License](LICENSE), unless otherwise stated.
 
 ## Plugins in this Repository
 
